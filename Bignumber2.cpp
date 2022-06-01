@@ -98,9 +98,9 @@ list<int> subtracao(list<int> A, list<int> B){
     itB--;
 
     while(itA != A.begin()){
-        x = *itA;
-        y = (*itB) + aux;
-    if(y > x){
+        x = (*itA) - aux ;
+        y = *itB;
+    if(y > x){//Técnica de "Pegar emprestado"
         x+=10;
         sub = x - y;
         aux = 1;
@@ -112,8 +112,8 @@ list<int> subtracao(list<int> A, list<int> B){
         itA--;
         itB--;
     }
-        x = *itA;
-        y = (*itB) + aux;
+        x = (*itA) - aux ;
+        y = *itB;
     if(y > x){
         x+=10;
         sub = x - y;
