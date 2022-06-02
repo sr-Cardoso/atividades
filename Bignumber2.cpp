@@ -19,24 +19,35 @@ void printNumber(list<int> N){
     
 }
 
+void zerosEsquerda(list<int>*A, list<int>*B){
+    int v_A = (*A).size();
+    int v_B = (*B).size();
+    if(v_A > v_B){
+        int add_zero = v_A - v_B;
+        for(int i = 0; i < add_zero; i++){
+            (*B).push_front(0);
+        }
+    }
+}
+
 int main(){
     setlocale(LC_ALL, "Portuguese");
     list<int> N1, N2;
     //int V[] = {1,2,1,2,1,4,5,2,3,8,6,4,5,8,9,5,3,1,3,5,7,9,1,5,4,1,0,9,0,8,7,6,7};
     int V[] = {9,8,9,6,5,1};
-    int V2[] = {6,0,1,6,7,9}; 
+    int V2[] = {1,6,7,9}; 
 
     for (size_t i = 0; i < 6; i++)
     {
         N1.push_back(V[i]);
     }
 
-    for (size_t i = 0; i < 6; i++)
+    for (size_t i = 0; i < 4; i++)
     {
         N2.push_back(V2[i]);
     }
 
-    printf("Big number:");
+    printf("Big number:\n");
     printNumber(N1);
     printNumber(N2);
     list<int> C = soma(N1, N2);
@@ -45,9 +56,13 @@ int main(){
     printNumber(C);
     printf("Subtracão dos bignumber: ");
     printNumber(D);
-/*   printf("Multiplicação por 10: ");
+    printf("Multiplicação por 10:\n");
     vezes10(&N1);
-    printNumber(N1); */
+    printNumber(N1);
+    vezes10(&N2);
+    printNumber(N2);  
+     
+     return 0;
 }
 
 list<int> vezes10(list<int> *N){
@@ -56,6 +71,7 @@ list<int> vezes10(list<int> *N){
 }
 
 list<int> soma(list<int> A, list<int> B){
+    zerosEsquerda(&A, &B);
     list<int> C;
     list<int>::iterator itA;
     list<int>::iterator itB;
@@ -86,6 +102,7 @@ list<int> soma(list<int> A, list<int> B){
     return C;
 }
 list<int> subtracao(list<int> A, list<int> B){
+    zerosEsquerda(&A, &B);
     list<int> D;
     list<int>::iterator itA;
     list<int>::iterator itB;
