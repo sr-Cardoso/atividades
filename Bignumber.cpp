@@ -19,6 +19,16 @@ void printNumber(list<int> N){
     
 }
 
+void zerosEsquerda(list<int>*A, list<int>*B){
+    int v_A = (*A).size();
+    int v_B = (*B).size();
+    if(v_A > v_B){
+        int add_zero = v_A - v_B;
+        for(int i = 0; i < add_zero; i++){
+            (*B).push_front(0);
+        }
+    }
+}
 
 int main(){
     setlocale(LC_ALL, "Portuguese");
@@ -51,6 +61,7 @@ list<int> vezes10(list<int> *N){
 }
 
 list<int> soma(list<int> A, list<int> B){
+    zerosEsquerda(&A, &B);
     list<int> C;
     list<int>::iterator itA;
     list<int>::iterator itB;
@@ -81,6 +92,7 @@ list<int> soma(list<int> A, list<int> B){
     return C;
 }
 list<int> subtracao(list<int> A, list<int> B){
+    zerosEsquerda(&A, &B);
     list<int> D;
     list<int>::iterator itA;
     list<int>::iterator itB;
